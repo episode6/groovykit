@@ -5,7 +5,7 @@ import org.junit.rules.TemporaryFolder
 import spock.lang.Specification
 
 /**
- * Tests methods added by FilesExtension
+ * Tests methods added by {@link FilesExtension}
  */
 class FilesExtensionTest extends Specification {
 

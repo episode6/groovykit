@@ -1,5 +1,8 @@
 package com.episode6.hackit.groovykit.files
 
+/**
+ * Extension methods for the File class that I've found useful
+ */
 class FilesExtension {
 
   static final File newFolder(final File self, String... paths) {
