@@ -8,7 +8,7 @@ This is kind of a dumping ground for reusable, yet generic, groovy utils.
 - Current Version: `0.0.1`
 
 ## Artifacts
-- `gk-files`: extension to the File class
+- `gk-files`: Extensions to the File class
 
 ### License
 MIT: https://github.com/episode6/groovykit/blob/master/LICENSE
