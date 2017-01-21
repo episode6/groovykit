@@ -24,7 +24,7 @@ class FilesExtensionTest extends Specification {
     assertValidDirectory(singleSubDir, "/singleSubDir")
   }
 
-  def "test newFile method"() {
+  def "test newFolderFromPackage method"() {
     given:
     File root = temporaryFolder.root
 
