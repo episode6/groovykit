@@ -37,9 +37,33 @@ class FilesExtensionTest extends Specification {
     assertValidDirectory(singlePackageSubdir, "/nice")
   }
 
+  def "test newFile method"() {
+    given:
+    File root = temporaryFolder
+
+    when:
+    File testFileInSubDir = root.newFile("src", "main", "testFile.txt")
+    testFileInSubDir.text = "test file in subdir"
+    File testFileInRootDir = root.newFile("testinroot.txt")
+    testFileInRootDir.text = "test file in root"
+
+    then:
+    assertValidFile(testFileInSubDir, "/src/main/testFile.txt")
+    testFileInSubDir.text == "test file in subdir"
+    assertValidFile(testFileInRootDir, "/testinroot.txt")
+    testFileInRootDir.text == "test file in root"
+  }
+
   private boolean assertValidDirectory(File file, String expectedPath, File expectedRoot = temporaryFolder.root) {
     assert file.path == expectedRoot.path + expectedPath
     assert file.isDirectory()
+    assert file.exists()
+    return true
+  }
+
+  private boolean assertValidFile(File file, String expectedPath, File expectedRoot = temporaryFolder.root) {
+    assert file.path == expectedRoot.path + expectedPath
+    assert !file.isDirectory()
     assert file.exists()
     return true
   }
