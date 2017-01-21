@@ -2,12 +2,12 @@ GroovyKit
 =========
 Groovy utilities to make life easier.
 
-This is kind of a dumping ground for reusable, yet generic, groovy tools
+This is kind of a dumping ground for reusable, yet generic, groovy utils.
 
 - Group ID: `com.episode6.hackit.groovykit`
 - Current Version: `0.0.1-SNAPSHOT`
 
-## Projects
+## Artifacts
 - `gk-files`: extension to the File class
 
 ### License
