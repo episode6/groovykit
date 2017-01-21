@@ -13,16 +13,34 @@ class FilesExtensionTest extends Specification {
 
   def "test newFolder method"() {
     given:
-    File rootDir = temporaryFolder.root
+    File root = temporaryFolder.root
 
     when:
-    File deepSubdir = rootDir.newFolder("dir1", "dir2", "dir3")
-    File singleSubDir = rootDir.newFolder("singleSubDir")
+    File deepSubdir = root.newFolder("dir1", "dir2", "dir3")
+    File singleSubDir = root.newFolder("singleSubDir")
 
     then:
-    deepSubdir.path == rootDir.path + "/dir1/dir2/dir3"
-    deepSubdir.isDirectory()
-    deepSubdir.exists()
-    singleSubDir.path == rootDir.path + "/singleSubDir"
+    assertValidDirectory(deepSubdir, "/dir1/dir2/dir3")
+    assertValidDirectory(singleSubDir, "/singleSubDir")
+  }
+
+  def "test newFile method"() {
+    given:
+    File root = temporaryFolder.root
+
+    when:
+    File realPackageSubdir = root.newFolderFromPackage("com.testing.cool")
+    File singlePackageSubdir = root.newFolderFromPackage("nice")
+
+    then:
+    assertValidDirectory(realPackageSubdir, "/com/testing/cool")
+    assertValidDirectory(singlePackageSubdir, "/nice")
+  }
+
+  private boolean assertValidDirectory(File file, String expectedPath, File expectedRoot = temporaryFolder.root) {
+    assert file.path == expectedRoot.path + expectedPath
+    assert file.isDirectory()
+    assert file.exists()
+    return true
   }
 }
