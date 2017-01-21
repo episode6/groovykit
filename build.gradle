@@ -1,0 +1,18 @@
+buildscript {
+  repositories {
+    jcenter()
+  }
+  dependencies {
+    classpath 'com.episode6.hackit.deployable:deployable:0.1'
+  }
+}
+
+allprojects {
+  repositories {
+    jcenter()
+  }
+
+  group = "com.episode6.hackit.groovykit"
+  version = "0.0.1"
+}
+
