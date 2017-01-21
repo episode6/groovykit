@@ -39,7 +39,7 @@ class FilesExtensionTest extends Specification {
 
   def "test newFile method"() {
     given:
-    File root = temporaryFolder
+    File root = temporaryFolder.root
 
     when:
     File testFileInSubDir = root.newFile("src", "main", "testFile.txt")
@@ -52,6 +52,26 @@ class FilesExtensionTest extends Specification {
     testFileInSubDir.text == "test file in subdir"
     assertValidFile(testFileInRootDir, "/testinroot.txt")
     testFileInRootDir.text == "test file in root"
+  }
+
+  def "test asXml method"() {
+    given:
+    File testXmlFile = temporaryFolder.newFile("testing.xml")
+    testXmlFile << """
+<root>
+  <firstelm>hello</firstelm>
+  <secondelm>
+    <innerelm>hi again</innerelm>
+  </secondelm>
+</root>
+"""
+
+    when:
+    def xml = testXmlFile.asXml()
+
+    then:
+    xml.firstelm.text() == "hello"
+    xml.secondelm.innerelm.text() == "hi again"
   }
 
   private boolean assertValidDirectory(File file, String expectedPath, File expectedRoot = temporaryFolder.root) {
