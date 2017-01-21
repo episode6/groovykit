@@ -1,2 +1,2 @@
-rootProject.name = 'groovykit'
+include ':groovykit-files'
 
