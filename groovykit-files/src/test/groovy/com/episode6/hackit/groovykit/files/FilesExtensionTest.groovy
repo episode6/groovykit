@@ -74,6 +74,26 @@ class FilesExtensionTest extends Specification {
     xml.secondelm.innerelm.text() == "hi again"
   }
 
+  def "test asJson method"() {
+    given:
+    File testJsonFile = temporaryFolder.newFile("testing.json")
+    testJsonFile << """
+{
+  "firstkey": "hello",
+  "secondkey": {
+    "innerkey": "hi again"
+  }
+}
+"""
+
+    when:
+    def json = testJsonFile.asJson()
+
+    then:
+    json.firstkey == "hello"
+    json.secondkey.innerkey == "hi again"
+  }
+
   private boolean assertValidDirectory(File file, String expectedPath, File expectedRoot = temporaryFolder.root) {
     assert file.path == expectedRoot.path + expectedPath
     assert file.isDirectory()
