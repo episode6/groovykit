@@ -9,6 +9,7 @@ This is kind of a dumping ground for reusable, yet generic, groovy utils.
 
 ## Artifacts
 - `gk-files`: Extensions to the File class
+- `gk-versions`: A VersionComparator and extension to String.class to make it super simple to compare versions.
 
 ### License
 MIT: https://github.com/episode6/groovykit/blob/master/LICENSE
