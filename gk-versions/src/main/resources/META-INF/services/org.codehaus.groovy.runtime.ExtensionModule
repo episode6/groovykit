@@ -1,3 +1,3 @@
-moduleName = groovykit-files-extension-module
+moduleName = groovykit-versions-strings-extension-module
 moduleVersion = 0.0.2-SNAPSHOT
 extensionClasses = com.episode6.hackit.groovykit.versions.StringsExtension
