@@ -1,2 +1,2 @@
-include ':gk-files'
+include ':gk-files', ':gk-versions'
 
