@@ -32,4 +32,31 @@ class VersionComparatorTest extends Specification {
     versions.get(5) == "10.5.27"
   }
 
+  def "test weird version compare"() {
+    given:
+    String lowerVersion = "1.1-groovy-2.4-rc-2"
+    String higherVersion = "1.1-groovy-2.4-rc-3"
+
+    when:
+    int compareResult = versionComparator.compare(lowerVersion, higherVersion)
+    int compareResultInverse = versionComparator.compare(higherVersion, lowerVersion)
+
+    then:
+    compareResult < 0
+    compareResultInverse > 0
+  }
+
+  def "test snapshot compare"() {
+    given:
+    String lowerVersion = "2.8.17-SNAPSHOT"
+    String higherVersion = "2.08.17"
+
+    when:
+    int compareResult = versionComparator.compare(lowerVersion, higherVersion)
+    int compareResultInverse = versionComparator.compare(higherVersion, lowerVersion)
+
+    then:
+    compareResult < 0
+    compareResultInverse > 0
+  }
 }
