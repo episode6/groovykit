@@ -34,6 +34,15 @@ class StringsExtensionTest extends Specification {
     assertDiffVersionsCompareCorrectly(lowerVersion, higherVersion)
   }
 
+  def "test snapshot"() {
+    when:
+    String lowerVersion = "2.8.17-SNAPSHOT"
+    String higherVersion = "2.08.17"
+
+    then:
+    assertDiffVersionsCompareCorrectly(lowerVersion, higherVersion)
+  }
+
   private static boolean assertDiffVersionsCompareCorrectly(String lowerVersion, String higherVersion) {
     assertSameVersionsCompareCorrectly(lowerVersion)
     assertSameVersionsCompareCorrectly(higherVersion)
