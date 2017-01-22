@@ -5,5 +5,7 @@ package com.episode6.hackit.groovykit.versions
  */
 class StringsExtension {
 
-  
+  static final VersionCompareHelper asVersion(final String self) {
+    return new VersionCompareHelper(self)
+  }
 }
