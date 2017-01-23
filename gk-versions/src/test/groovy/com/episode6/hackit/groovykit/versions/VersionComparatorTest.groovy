@@ -59,4 +59,74 @@ class VersionComparatorTest extends Specification {
     compareResult < 0
     compareResultInverse > 0
   }
+
+  def "test build.snapshot"() {
+    given:
+    String lowerVersion = "2.1.0.BUILD-SNAPSHOT"
+    String higherVersion = "2.1.0"
+
+    when:
+    int compareResult = versionComparator.compare(lowerVersion, higherVersion)
+    int compareResultInverse = versionComparator.compare(higherVersion, lowerVersion)
+
+    then:
+    compareResult < 0
+    compareResultInverse > 0
+  }
+
+  def "test trailing zeroes non-equal"() {
+    given:
+    String lowerVersion = "2.1.0"
+    String higherVersion = "2.1.0.0.0.0.0.1"
+
+    when:
+    int compareResult = versionComparator.compare(lowerVersion, higherVersion)
+    int compareResultInverse = versionComparator.compare(higherVersion, lowerVersion)
+
+    then:
+    compareResult < 0
+    compareResultInverse > 0
+  }
+
+  def "test trailing zeroes with ambiguous test"() {
+    given:
+    String lowerVersion = "2.1.0"
+    String higherVersion = "2.1.0.0-groovy-0.0.0.1"
+
+    when:
+    int compareResult = versionComparator.compare(lowerVersion, higherVersion)
+    int compareResultInverse = versionComparator.compare(higherVersion, lowerVersion)
+
+    then:
+    compareResult < 0
+    compareResultInverse > 0
+  }
+
+  def "test trailing zeroes equality"() {
+    given:
+    String version1 = "2.1.0"
+    String version2 = "2.1.0.0.0.0.0.0"
+
+    when:
+    int compareResult = versionComparator.compare(version1, version2)
+    int compareResultInverse = versionComparator.compare(version2, version1)
+
+    then:
+    compareResult == 0
+    compareResultInverse == 0
+  }
+
+  def "test trailing ambuous text equality"() {
+    given:
+    String version1 = "2.1.0"
+    String version2 = "2.1.0.0.0-groovy-0.0.0"
+
+    when:
+    int compareResult = versionComparator.compare(version1, version2)
+    int compareResultInverse = versionComparator.compare(version2, version1)
+
+    then:
+    compareResult == 0
+    compareResultInverse == 0
+  }
 }
