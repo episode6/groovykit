@@ -13,6 +13,6 @@ allprojects {
   }
 
   group = "com.episode6.hackit.groovykit"
-  version = "0.0.3"
+  version = "0.0.4-SNAPSHOT"
 }
 
