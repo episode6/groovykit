@@ -71,12 +71,22 @@ class VersionComparator implements Comparator<String> {
       }
     }
 
+    // if everything has been equal up to this point, find the next non-zero
+    // number in the longer versionString and compare it to 0
     if (parts1.length > parts2.length) {
-      Integer lastComparablePart = convertPartToNumber(parts1[i])
-      return lastComparablePart == null ? 0 : (lastComparablePart <=> 0)
+      return findNextNonZeroNumber(parts1, i) <=> 0
     } else if (parts2.length > parts1.length) {
-      Integer lastComparablePart = convertPartToNumber(parts2[i])
-      return lastComparablePart == null ? 0 : (0 <=> lastComparablePart)
+      return 0 <=> findNextNonZeroNumber(parts2, i)
+    }
+    return 0
+  }
+
+  private static int findNextNonZeroNumber(String[] parts, int startIndex) {
+    for (int i = startIndex; i < parts.length; i++) {
+      Integer number = convertPartToNumber(parts[i])
+      if (number != null && number != 0) {
+        return number
+      }
     }
     return 0
   }

@@ -12,19 +12,19 @@ class VersionCompareHelper {
     this.comparator = new VersionComparator()
   }
 
-  boolean isLessThen(String otherVersion) {
+  boolean isLessThan(String otherVersion) {
     return comparator.compare(versionString, otherVersion) < 0
   }
 
-  boolean isLessThenEquals(String otherVersion) {
+  boolean isLessThanEquals(String otherVersion) {
     return comparator.compare(versionString, otherVersion) <= 0
   }
 
-  boolean isGreaterThen(String otherVersion) {
+  boolean isGreaterThan(String otherVersion) {
     return comparator.compare(versionString, otherVersion) > 0
   }
 
-  boolean isGreaterThenEquals(String otherVersion) {
+  boolean isGreaterThanEquals(String otherVersion) {
     return comparator.compare(versionString, otherVersion) >= 0
   }
 
