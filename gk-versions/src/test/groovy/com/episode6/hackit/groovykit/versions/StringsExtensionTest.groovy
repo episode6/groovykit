@@ -47,24 +47,24 @@ class StringsExtensionTest extends Specification {
     assertSameVersionsCompareCorrectly(lowerVersion)
     assertSameVersionsCompareCorrectly(higherVersion)
 
-    assert lowerVersion.asVersion().isLessThen(higherVersion)
-    assert lowerVersion.asVersion().isLessThenEquals(higherVersion)
-    assert !lowerVersion.asVersion().isGreaterThen(higherVersion)
-    assert !lowerVersion.asVersion().isGreaterThenEquals(higherVersion)
+    assert lowerVersion.asVersion().isLessThan(higherVersion)
+    assert lowerVersion.asVersion().isLessThanEquals(higherVersion)
+    assert !lowerVersion.asVersion().isGreaterThan(higherVersion)
+    assert !lowerVersion.asVersion().isGreaterThanEquals(higherVersion)
     assert !lowerVersion.asVersion().isEqualTo(higherVersion)
 
-    assert higherVersion.asVersion().isGreaterThen(lowerVersion)
-    assert higherVersion.asVersion().isGreaterThenEquals(higherVersion)
-    assert !higherVersion.asVersion().isLessThen(lowerVersion)
-    assert !higherVersion.asVersion().isLessThenEquals(lowerVersion)
+    assert higherVersion.asVersion().isGreaterThan(lowerVersion)
+    assert higherVersion.asVersion().isGreaterThanEquals(higherVersion)
+    assert !higherVersion.asVersion().isLessThan(lowerVersion)
+    assert !higherVersion.asVersion().isLessThanEquals(lowerVersion)
     assert !higherVersion.asVersion().isEqualTo(lowerVersion)
 
     return true
   }
 
   private static boolean assertSameVersionsCompareCorrectly(String version) {
-    assert version.asVersion().isLessThenEquals(version)
-    assert version.asVersion().isGreaterThenEquals(version)
+    assert version.asVersion().isLessThanEquals(version)
+    assert version.asVersion().isGreaterThanEquals(version)
     assert version.asVersion().isEqualTo(version)
     return true
   }
