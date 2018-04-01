@@ -5,10 +5,10 @@ apply plugin: 'com.episode6.hackit.gdmc'
 
 
 dependencies {
-  compile localGroovy()
-  compile gradleApi()
+  implementation localGroovy()
+  implementation gradleApi()
 
-  testCompile("org.spockframework:spock-core")  {
+  testImplementation("org.spockframework:spock-core")  {
     exclude module: 'groovy-all'
   }
 }
